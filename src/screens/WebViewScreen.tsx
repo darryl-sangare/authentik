@@ -1,0 +1,20 @@
+import { View, ActivityIndicator } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { useRoute } from '@react-navigation/native';
+
+export default function WebViewScreen() {
+  const route = useRoute();
+  const { url } = route.params as { url: string };
+
+  return (
+    <WebView
+      source={{ uri: url }}
+      startInLoadingState
+      renderLoading={() => (
+        <View className="flex-1 justify-center items-center">
+          <ActivityIndicator size="large" />
+        </View>
+      )}
+    />
+  );
+}
