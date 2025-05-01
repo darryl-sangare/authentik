@@ -8,7 +8,6 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import WebViewScreen from '../screens/WebViewScreen';
 
-// ➔ Définir les types pour chaque route de l'app
 export type RootStackParamList = {
   Home: undefined;
   Cart: undefined;
@@ -18,7 +17,7 @@ export type RootStackParamList = {
   WebViewScreen: { url: string; title: string };
 };
 
-// ➔ Créer le Stack Navigator typé
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function AppNavigator() {

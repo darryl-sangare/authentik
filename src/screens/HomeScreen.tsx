@@ -1,11 +1,11 @@
+import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 
-const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-
+// Typage de la navigation
+type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
 const brands = [
   { name: "Amazon", url: "https://www.amazon.fr/" },
@@ -17,7 +17,7 @@ const brands = [
 ];
 
 export default function HomeScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
 
   return (
     <ScrollView className="flex-1 bg-white px-4 py-6">
@@ -27,7 +27,10 @@ export default function HomeScreen() {
           <TouchableOpacity
             key={index}
             className="bg-gray-100 rounded-xl w-[48%] h-32 mb-4 justify-center items-center"
-            onPress={() => navigation.navigate('WebViewScreen', { url: brand.url, title: brand.name })}
+            onPress={() => navigation.navigate('WebViewScreen', {
+              url: brand.url,
+              title: brand.name
+            })}
           >
             <Text className="text-lg font-bold">{brand.name}</Text>
           </TouchableOpacity>
