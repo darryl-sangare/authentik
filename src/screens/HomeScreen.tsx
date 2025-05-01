@@ -4,9 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 
-// Typage de la navigation
-type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
-
 const brands = [
   { name: "Amazon", url: "https://www.amazon.fr/" },
   { name: "Zalando", url: "https://www.zalando.fr/" },
@@ -16,12 +13,15 @@ const brands = [
   { name: "Pull and Bear", url: "https://www.pullandbear.com/fr/" },
 ];
 
+// On utilise la route WebViewScreen du stack
+type WebViewNavProp = NativeStackNavigationProp<RootStackParamList, 'WebViewScreen'>;
+
 export default function HomeScreen() {
-  const navigation = useNavigation<HomeScreenNavigationProp>();
+  const navigation = useNavigation<WebViewNavProp>();
 
   return (
     <ScrollView className="flex-1 bg-white px-4 py-6">
-      <Text className="text-2xl font-bold text-center mb-6">Bienvenue sur Afrizone 🌍</Text>
+      <Text className="text-2xl font-bold text-center mb-6">Authentik Express</Text>
       <View className="flex-row flex-wrap justify-between">
         {brands.map((brand, index) => (
           <TouchableOpacity
